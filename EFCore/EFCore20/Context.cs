@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 namespace EFCore20
 {
     public class Context : DbContext
@@ -10,8 +8,7 @@ namespace EFCore20
         public Context()
         { }
 
-        public Context(DbContextOptions<Context> options) : base(options)
-        { }
+        public Context(DbContextOptions<Context> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,7 +21,6 @@ namespace EFCore20
         protected override void OnModelCreating(ModelBuilder construtorDeModelos)
         {
             construtorDeModelos.ApplyConfiguration(new ProdutoMap());
-            construtorDeModelos.ApplyConfiguration(new CategoriaMap());
 
             // Global query filter
             construtorDeModelos.Entity<Produto>().HasQueryFilter(p => p.Ativo);
